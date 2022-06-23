@@ -52,8 +52,9 @@ def main():
     download_background()
     chop_background_video(length)
     make_final_video(number_of_comments, length)
-    if "results" in os.listdir and len(os.listdir("./results")) > 0:
-        shutil.move(os.listdir("./results")[0], "../TiktokAutoUploader2022/pendingUpload")
+    moving_file = os.listdir("./results")[0]
+    if "results" in os.listdir() and len(os.listdir("./results")) > 0:
+        shutil.move("./results/" + moving_file, "../TiktokAutoUploader2022/pendingUpload/" + moving_file)
 
 def run_many(times):
     for x in range(times):
