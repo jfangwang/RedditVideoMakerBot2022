@@ -3,6 +3,7 @@ import time
 from subprocess import Popen
 from dotenv import load_dotenv
 from os import getenv, name
+import os, shutil
 from reddit.subreddit import get_subreddit_threads
 from utils.cleanup import cleanup
 from utils.console import print_markdown, print_step
@@ -51,7 +52,8 @@ def main():
     download_background()
     chop_background_video(length)
     make_final_video(number_of_comments, length)
-
+    if "results" in os.listdir and len(os.listdir("./results")) > 0:
+        shutil.move(os.listdir("./results")[0], "../TiktokAutoUploader2022/pendingUpload")
 
 def run_many(times):
     for x in range(times):
